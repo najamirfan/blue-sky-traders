@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Sky Traders | Professional Electrical & Plumbing Services</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0077b6;
+            --primary-dark: #023e8a;
+            --secondary: #00b4d8;
+            --accent: #25D366; /* WhatsApp Green */
+            --dark: #1d2d44;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+        }
+
+        /* --- Header --- */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            background-color: #1eb854;
+        }
+
+        .btn-quote {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-quote:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(2, 62, 138, 0.85), rgba(0, 119, 182, 0.85)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            font-size: 14px;
+        }
+
+        /* --- Services Section --- */
+        .services-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .category-header {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        /* Dynamic Background Images per Category */
+        .cat-electrical-install .category-header {
+            background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .cat-electrical-repair .category-header {
+            background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .cat-plumbing .category-header {
+            background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .category-header h3 {
+            color: white;
+            padding: 20px;
+            font-size: 22px;
+            width: 100%;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list i {
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .card-footer {
+            padding: 15px 20px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-card:hover {
+            background: var(--primary-dark);
+        }
+
+        /* --- Query Form Section --- */
+        .query-section {
+            background: white;
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary);
+        }
+
+        /* --- Floating WhatsApp CTA --- */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--accent);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .footer-col p, .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-contact-item i {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Blue Sky Traders</span>
+            </a>
+            <div class="header-actions">
+                <a href="#query-form" class="btn-quote">Get a Quote</a>
+                <a href="https://wa.me/966500000000?text=Hello%20Blue%20Sky%20Traders,%20I%20need%20a%20service%20quote." target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Reliable Electrical & Plumbing Solutions</h1>
+        <p>Fast, professional, and guaranteed technical services for home and commercial properties in Dammam and surrounding areas.</p>
+        <div class="hero-badges">
+            <span class="badge"><i class="fa-solid fa-clock"></i> 24/7 Emergency Service</span>
+            <span class="badge"><i class="fa-solid fa-shield-halved"></i> Certified Technicians</span>
+            <span class="badge"><i class="fa-solid fa-thumbs-up"></i> Satisfaction Guaranteed</span>
+        </div>
+    </section>
+
+    <!-- Categorized Services Section -->
+    <section class="services-section">
+        <div class="section-title">
+            <h2>Our Specialized Services</h2>
+        </div>
+
+        <div class="category-grid">
+
+            <!-- Category 1: Electrical Installation & Automation -->
+            <div class="category-card cat-electrical-install">
+                <div class="category-header">
+                    <h3>Electrical Installation & Automation</h3>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-circle"></i> Electrical socket and switch installation</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Light fixture installation</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Outdoor lighting installation</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Lighting Installation Dammam</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Smart Home and Lighting Automation</li>
+                    <li><i class="fa-solid fa-check-circle"></i> New Construction Electrical Installation</li>
+                </ul>
+                <div class="card-footer">
+                    <a href="#query-form" class="btn-card">Book Service</a>
+                </div>
+            </div>
+
+            <!-- Category 2: Electrical Repairs & Maintenance -->
+            <div class="category-card cat-electrical-repair">
+                <div class="category-header">
+                    <h3>Electrical Repair & Maintenance</h3>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-circle"></i> Electrical socket and switch relocation</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Electrical socket and switch repair</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Electrical Fault Repair</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Electrical Wiring & Rewiring</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Distribution Board Installation and Repair</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Emergency Electrician Dammam</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Electrical Maintenance Contract</li>
+                </ul>
+                <div class="card-footer">
+                    <a href="#query-form" class="btn-card">Book Service</a>
+                </div>
+            </div>
+
+            <!-- Category 3: Plumbing & Water Leakage -->
+            <div class="category-card cat-plumbing">
+                <div class="category-header">
+                    <h3>Plumbing & Water Systems</h3>
+                </div>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check-circle"></i> Water Leak Detection and Repair</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Blocked Drain Cleaning Dammam</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Pipe Installation and Repair</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Water Heater Installation and Repair</li>
+                </ul>
+                <div class="card-footer">
+                    <a href="#query-form" class="btn-card">Book Service</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Query / Booking Form Section -->
+    <section class="query-section" id="query-form">
+        <div class="section-title">
+            <h2>Send Us Your Query</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-control" placeholder="e.g. +966 5X XXX XXXX" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Choose Category (Optional)</label>
+                <select id="category" class="form-control">
+                    <option value="">-- Select Service Category --</option>
+                    <option value="electrical-installation">Electrical Installation & Automation</option>
+                    <option value="electrical-repair">Electrical Repair & Maintenance</option>
+                    <option value="plumbing">Plumbing & Water Systems</option>
+                    <option value="plumbing">Others</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="requirements">Requirements / Message *</label>
+                <textarea id="requirements" class="form-control" placeholder="Please describe the issue or installation details..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Query</button>
+        </form>
+    </section>
+
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me/966500000000?text=Hello%20Blue%20Sky%20Traders,%20I%20have%20an%20urgent%20inquiry." class="floating-whatsapp" target="_blank" title="Chat with us">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#" class="logo" style="color: white; margin-bottom: 15px;">
+                    <i class="fa-solid fa-bolt" style="color: var(--secondary);"></i>
+                    <span>Blue Sky Traders</span>
+                </a>
+                <p>Providing top-tier electrical installation, repair, and plumbing services with fast response times and expert craftsmanship across Dammam.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#query-form">Get a Quote</a>
+                <a href="#query-form">Send Query</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+966 50 000 0000</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>info@blueskytraders.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Dammam, Eastern Province, Saudi Arabia</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2026 Blue Sky Traders. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
