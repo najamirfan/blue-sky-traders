@@ -506,40 +506,61 @@
 
     <!-- Query / Booking Form Section -->
     <section class="query-section" id="query-form">
-        <div class="section-title">
-            <h2>Send Us Your Query</h2>
+    <div class="section-title">
+        <h2>Send Us Your Query</h2>
+    </div>
+    <form id="whatsappQueryForm">
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
         </div>
-        <form>
-            <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
-            </div>
 
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input type="tel" id="phone" class="form-control" placeholder="e.g. +966 5X XXX XXXX" required>
-            </div>
+        <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" class="form-control" placeholder="e.g. +966 5X XXX XXXX" required>
+        </div>
 
-            <div class="form-group">
-                <label for="category">Choose Category (Optional)</label>
-                <select id="category" class="form-control">
-                    <option value="">-- Select Service Category --</option>
-                    <option value="electrical-installation">Electrical Installation & Automation</option>
-                    <option value="electrical-repair">Electrical Repair & Maintenance</option>
-                    <option value="plumbing">Plumbing & Water Systems</option>
-                    <option value="plumbing">Others</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <label for="category">Choose Category (Optional)</label>
+            <select id="category" class="form-control">
+                <option value="">-- Select Service Category --</option>
+                <option value="Electrical Installation & Automation">Electrical Installation & Automation</option>
+                <option value="Electrical Repair & Maintenance">Electrical Repair & Maintenance</option>
+                <option value="Plumbing & Water Systems">Plumbing & Water Systems</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="requirements">Requirements / Message *</label>
-                <textarea id="requirements" class="form-control" placeholder="Please describe the issue or installation details..." required></textarea>
-            </div>
+        <div class="form-group">
+            <label for="requirements">Requirements / Message *</label>
+            <textarea id="requirements" class="form-control" placeholder="Please describe the issue or installation details..." required></textarea>
+        </div>
 
-            <button type="submit" class="btn-submit">Submit Query</button>
-        </form>
-    </section>
+        <button type="submit" class="btn-submit">Submit via WhatsApp</button>
+    </form>
+</section>
 
+<script>
+document.getElementById('whatsappQueryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Replace with your WhatsApp number (Country code + Phone number, no spaces or + sign)
+    const phoneNumber = "96556574039"; 
+    
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const category = document.getElementById('category').value || 'Not selected';
+    const requirements = document.getElementById('requirements').value;
+
+    const message = `*New Customer Query - Blue Sky Traders*%0A%0A` +
+                    `*Name:* ${encodeURIComponent(name)}%0A` +
+                    `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                    `*Category:* ${encodeURIComponent(category)}%0A` +
+                    `*Requirements:* ${encodeURIComponent(requirements)}`;
+
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+});
+</script>
     <!-- Floating WhatsApp Action -->
     <a href="https://wa.me/966500000000?text=Hello%20Blue%20Sky%20Traders,%20I%20have%20an%20urgent%20inquiry." class="floating-whatsapp" target="_blank" title="Chat with us">
         <i class="fa-brands fa-whatsapp"></i>
